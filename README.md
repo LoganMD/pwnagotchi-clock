@@ -1,5 +1,7 @@
 # Pwnagotchi Clock/Calendar
 
+![pic](https://i.imgur.com/iEbByAX.png)
+
 ## Installation
 
 To install, first set your directory for custom plugins in your config file.  
