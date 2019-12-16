@@ -36,5 +36,5 @@ class PwnClock(plugins.Plugin):
 
     def on_ui_update(self, ui):
         now = datetime.datetime.now()
-        time_rn = now.strftime("%d/%m/%y\n%I:%M%p")
+        time_rn = now.strftime("%m/%d/%y\n%I:%M%p")
         ui.set('clock', time_rn)
