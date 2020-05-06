@@ -5,15 +5,14 @@
 ## Installation
 
 To install, first set your directory for custom plugins in your config file.  
-In `main` add `custom_plugins: "/custom/plugins/directory"`
-(replace custom_plugins_directory with the directory of your custom plugins folder, for example, `/home/pi/plugins/`)
+Find or add `main.custom_plugins = "/custom/plugin/directory"` Initially, it may be empty.
 
 After that, add `clock.py` to that folder.
-Finally, enable it in your config.yml.  
+Finally, enable it in your config.toml by adding the following line:
 
-    plugins:
-      clock:
-         enabled: true
+```toml
+main.plugins.clock.enabled = true
+```
 
 ## FAQ
 

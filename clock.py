@@ -5,12 +5,10 @@ import pwnagotchi.plugins as plugins
 import pwnagotchi
 import logging
 import datetime
-import yaml
-
 
 class PwnClock(plugins.Plugin):
     __author__ = 'https://github.com/LoganMD'
-    __version__ = '1.0.2'
+    __version__ = '1.0.3'
     __license__ = 'GPL3'
     __description__ = 'Clock/Calendar for pwnagotchi'
 
@@ -18,16 +16,16 @@ class PwnClock(plugins.Plugin):
         logging.info("Pwnagotchi Clock Plugin loaded.")
 
     def on_ui_setup(self, ui):
-        memenable = False
-        with open('/etc/pwnagotchi/config.yml') as f:
-            data = yaml.load(f, Loader=yaml.FullLoader)
+        emenable = False
 
-            if 'memtemp' in data["main"]["plugins"]:
-                if 'enabled' in data["main"]["plugins"]["memtemp"]:
-                    if data["main"]["plugins"]["memtemp"]["enabled"]:
-                        memenable = True
-                        logging.info(
-                            "Pwnagotchi Clock Plugin: memtemp is enabled")
+        with open('/etc/pwnagotchi/config.toml', 'r') as f:
+            config = f.read().splitlines()
+
+        if "main.plugins.memtemp.enabled = true" in config:
+            memenable = True
+            logging.info(
+                "Pwnagotchi Clock Plugin: memtemp is enabled")
+
         if ui.is_waveshare_v2():
             pos = (130, 80) if memenable else (200, 80)
             ui.add_element('clock', LabeledValue(color=BLACK, label='', value='-/-/-\n-:--',
